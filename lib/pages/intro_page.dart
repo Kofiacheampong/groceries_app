@@ -16,7 +16,7 @@ class IntroPage extends StatelessWidget {
             child: Image.asset('lib/assets/images/avocado.png'),
           ),
           Padding(
-            padding: EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(24.0),
             child: Text(
               'We deliver groceries at your doorstep',
               textAlign: TextAlign.center,

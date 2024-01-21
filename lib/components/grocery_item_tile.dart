@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class GroceryItemTile extends StatefulWidget {
+class GroceryItemTile extends StatelessWidget {
   final String itemName;
   final String itemPrice;
   final String imagePath;
-  final dynamic color; // Specify the type of color you want
+  final Color color; // Specify the type of color you want
 
   const GroceryItemTile({
-    Key? key, // Use Key? instead of super.key
+    Key? key,
     required this.itemName,
     required this.imagePath,
     required this.itemPrice,
@@ -15,18 +15,44 @@ class GroceryItemTile extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _GroceryItemTileState createState() => _GroceryItemTileState();
-}
-
-class _GroceryItemTileState extends State<GroceryItemTile> {
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Image.asset(widget.imagePath),
-          // Add more widgets for itemName, itemPrice, etc.
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: color.withOpacity(0.1),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset(
+              imagePath,
+              height: 64,
+            ),
+            Text(
+              itemName,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                // Add more text styling properties as needed
+              ),
+            ),
+            MaterialButton(
+              onPressed: () {},
+              color: color.withOpacity(0.8),
+              child: Text(
+                'Price: $itemPrice',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  // Add more text styling properties as needed
+                ),
+              ),
+            ),
+            // Add more widgets for additional details
+          ],
+        ),
       ),
     );
   }
